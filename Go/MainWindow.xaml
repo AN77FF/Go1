@@ -1,0 +1,29 @@
+﻿<Window x:Class="Go.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Go.Base"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="600">
+   
+    <Grid>
+                <Button Content="Начать игру" Width="100" Height="50" Click="StartGame_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Content="Сбросить игру" Width="100" Height="50" Click="ResetGame_Click" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+
+                <TextBlock Text="{Binding GameStatus}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0"/>
+
+                <ItemsControl x:Name="GameBoard" Margin="10,100,10,10">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="{Binding BoardSize}" Columns="{Binding BoardSize}"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding Path=PlacementMode}" Width="40" Height="40" Background="{Binding CellColor}" Click="Cell_Click" Tag="{Binding Position}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Window>

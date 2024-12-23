@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using Go.ViewModel;
 
+
 namespace Go
 {
     public partial class MainWindow : Window
@@ -27,7 +28,6 @@ namespace Go
         private Button[,] cells;
         private int[,] board; 
         private bool isPlayerOneTurn;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -57,7 +57,10 @@ namespace Go
                 }
             }
         }
-
+        private void NewGame_Click(object sender, RoutedEventArgs e)
+        {
+            InitializeGame(); 
+        }
         private void CellClicked(int x, int y)
         {
             if (board[x, y] != 0) return;
@@ -68,7 +71,6 @@ namespace Go
             CaptureOpponents(x, y);
             isPlayerOneTurn = !isPlayerOneTurn;
         }
-
         private void CaptureOpponents(int x, int y)
         {
             List<(int, int)> groupToCapture = new List<(int, int)>();

@@ -6,24 +6,18 @@
         xmlns:local="clr-namespace:Go.Base"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="600">
-   
     <Grid>
-                <Button Content="Начать игру" Width="100" Height="50" Click="StartGame_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Button Content="Сбросить игру" Width="100" Height="50" Click="ResetGame_Click" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> 
+            <RowDefinition Height="*"/>    
+        </Grid.RowDefinitions>
 
-                <TextBlock Text="{Binding GameStatus}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
+            <Button Content="Новая игра" Width="100" Click="NewGame_Click"/>
+        </StackPanel>
 
-                <ItemsControl x:Name="GameBoard" Margin="10,100,10,10">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <UniformGrid Rows="{Binding BoardSize}" Columns="{Binding BoardSize}"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Button Command="{Binding Path=PlacementMode}" Width="40" Height="40" Background="{Binding CellColor}" Click="Cell_Click" Tag="{Binding Position}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Grid>
-        </Window>
+        <UniformGrid x:Name="GameBoard" Rows="19" Columns="19" Grid.Row="1" Margin="10">
+            
+        </UniformGrid>
+    </Grid>
+</Window>

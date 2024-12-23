@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using Go.ViewModel;
 
-namespace GoGame
+namespace Go
 {
     public partial class MainWindow : Window
     {
